@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: test-nttdata
+  data:
+    mongodb:
+      uri: mongodb+srv://root:root@cluster-dev.o0fnonv.mongodb.net/nttdata
+
+server:
+  port: 9090
+

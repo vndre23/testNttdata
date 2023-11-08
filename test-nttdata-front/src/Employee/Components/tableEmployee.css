@@ -1,0 +1,32 @@
+.p-row-toggler-icon{
+    color:black !important;
+}
+
+.header-table-principal{
+    /* background-color: white !important; */
+    background-color: #805AD5;
+    color:white;
+
+    
+}
+.table-principal{
+    border: 0.5 solid black;
+}
+
+.table-secondary{
+    background-color: #770FA7;
+    color:white;
+}
+
+.p-column-header-content span .p-sortable-column-icon{
+    color:white;
+}
+
+.p-checkbox-box{
+    
+    border: #6366F1 solid 0.5px;
+}
+.table-office{
+    background-color:#6366F1;
+    color:white;
+}

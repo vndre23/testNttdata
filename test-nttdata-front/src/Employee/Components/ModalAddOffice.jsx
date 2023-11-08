@@ -1,5 +1,5 @@
 import { CheckCircleIcon, NotAllowedIcon } from '@chakra-ui/icons'
-import { Button, FormControl, FormLabel, Input, Stack } from '@chakra-ui/react'
+import { Button, FormControl, FormErrorMessage, FormLabel, Input, Stack } from '@chakra-ui/react'
 import { Dialog } from 'primereact/dialog'
 import React from 'react'
 
@@ -19,17 +19,19 @@ export const ModalAddOffice = ({ formik, handleClickCloseOffice,visibleAddOffice
                 <form onSubmit={formik.handleSubmit}>
                     <div className='formgrid grid'>
                         <div className='field col-12'>
-                            <FormControl>
-                                <FormLabel>Oficina</FormLabel>
-                                <Input
-                                    type='text'
-                                    placeholder='ingresa el nombre de una oficina'
-                                    id="name"
-                                    name='name'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.name}
-                                />
-                            </FormControl>
+                        <FormControl isInvalid={formik.errors.name} isRequired>
+                            <FormLabel>Nombre</FormLabel>
+                            <Input
+                                type='text'
+                                placeholder='ingresa tu nombre'
+                                id='name'
+                                name='name'
+                                onChange={formik.handleChange}
+                                value={formik.values.name}
+                                onBlur={formik.handleBlur}
+                            />
+                        </FormControl>
+                        {formik.touched.name && formik.errors.name && <FormErrorMessage>{formik.errors.name}</FormErrorMessage>}
                         </div>
 
                     </div>

@@ -151,7 +151,12 @@ export const controller = () => {
         onSubmit: values => {
             console.log(values);
             createOffice(values);
-        }
+        },
+        validationSchema:Yup.object({
+            name: Yup.string().required('Dato Requerido'),
+            
+        })
+        
     });
 
     //====================== actions CRUD office =============================

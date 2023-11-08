@@ -3,10 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 export const officeSlice = createSlice({
     name: 'office',
     initialState: {
+        isLoadingOffice:false,
         activeOffice:null,
         offices: [],
     },
     reducers: {
+        onLoadingOffice:(state,{payload}) => {
+            state.isLoadingOffice=payload;
+        },
         onSetActiveOffice: ( state, { payload }) => {
             
             state.activeOffice = payload;
@@ -47,6 +51,7 @@ export const {
     onAddNewOffice,
     onUpdateOffice,
     onLoadOffice,
-    onDeleteOffice
+    onDeleteOffice,
+    onLoadingOffice
 
 } = officeSlice.actions;

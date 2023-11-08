@@ -5,7 +5,7 @@ import { DataTable } from 'primereact/datatable'
 import { Dialog } from 'primereact/dialog'
 import React from 'react'
 
-export const ModalViewOffice = ({ visibleViewOffice, offices, handleClickOffice, onHideViewOffice, title, viewAddButton,handleClickUpdate,handleClickDelete }) => {
+export const ModalViewOffice = ({ visibleViewOffice, offices, handleClickOffice, onHideViewOffice, title, viewAddButton,handleClickUpdate,handleClickDelete,isLoadingOffice }) => {
 
     const actionBodyTemplate = (rowData) => {
         return (<>
@@ -18,6 +18,7 @@ export const ModalViewOffice = ({ visibleViewOffice, offices, handleClickOffice,
                         size='lg'
                         icon={<EditIcon />}
                         onClick={() => handleClickUpdate(rowData)}
+                        isLoading={isLoadingOffice}
 
                     />
                 </Tooltip>

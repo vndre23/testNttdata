@@ -3,7 +3,7 @@ import { Button, FormControl, FormErrorMessage, FormLabel, Input, Stack, Textare
 import { Dialog } from 'primereact/dialog';
 import React from 'react';
 
-export const ModalEmployee = ({ visible, handleClickClose,formik }) => {
+export const ModalEmployee = ({ visible, handleClickClose,formik,isLoadingEmployee }) => {
     const footerContent = (
         <div>
             <Stack spacing={2} direction={'row'}>
@@ -111,7 +111,7 @@ export const ModalEmployee = ({ visible, handleClickClose,formik }) => {
                 </div>
                 <div className='mt-4'>
             <Stack spacing={2} direction={'row'}>
-                <Button rightIcon={<CheckCircleIcon />} colorScheme='green' type="submit">
+                <Button rightIcon={<CheckCircleIcon />} colorScheme='green' type="submit" isLoading={isLoadingEmployee}>
                     Guardar
                 </Button>
                 <Button rightIcon={<NotAllowedIcon />} colorScheme='red' type="button" onClick={()=>handleClickClose()}>

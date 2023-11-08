@@ -47,6 +47,8 @@ export const PageEmployee = ({
     handleClickDetailOffice,
     onHideDetailOffice,
     handleClickOfficeUpdate,
+    isLoadingEmployee,
+    isLoadingOffice
 }) => {
     
     return (
@@ -64,6 +66,8 @@ export const PageEmployee = ({
                 handleClickAsigmentOffice={handleClickAsigmentOffice}
                 handleClickViewOffice={handleClickViewOffice}
                 handleClickDetailOffice={handleClickDetailOffice}
+                isLoadingEmployee={isLoadingEmployee}
+                isLoadingOffice={isLoadingOffice}
 
             />
 
@@ -71,6 +75,8 @@ export const PageEmployee = ({
                 formik={formik}
                 visible={visible}
                 handleClickClose={handleClickClose}
+                isLoadingEmployee={isLoadingEmployee}
+                isLoadingOffice={isLoadingOffice}
             />
 
             <AlertDeleteEmployee
@@ -78,6 +84,8 @@ export const PageEmployee = ({
                 isOpen={isOpen}
                 deleteEmployee={deleteEmployee}
                 onClose={onClose}
+                isLoadingEmployee={isLoadingEmployee}
+                isLoadingOffice={isLoadingOffice}
             />
 
             <ModalViewOffice
@@ -87,7 +95,9 @@ export const PageEmployee = ({
                 onHideViewOffice={onHideViewOffice}
                 title="Mis Oficinas"
                 viewAddButton={true}
-                handleClickUpdate={handleClickOfficeUpdate} 
+                handleClickUpdate={handleClickOfficeUpdate}
+                isLoadingEmployee={isLoadingEmployee}
+                isLoadingOffice={isLoadingOffice}
                 
             />
 
@@ -98,6 +108,8 @@ export const PageEmployee = ({
                 viewAddButton={false}
                 onHideViewOffice={onHideDetailOffice}
                 title={`${formik.values.name} se asigno las oficinas`}
+                isLoadingEmployee={isLoadingEmployee}
+                isLoadingOffice={isLoadingOffice}
                 
             />
 
@@ -105,7 +117,8 @@ export const PageEmployee = ({
                 formik={formikOffice}
                 visibleAddOffice={visibleAddOffice}
                 handleClickCloseOffice={handleClickCloseOffice}
-                
+                isLoadingEmployee={isLoadingEmployee}
+                isLoadingOffice={isLoadingOffice}
                 
             />
 
@@ -117,6 +130,7 @@ export const PageEmployee = ({
                 onHideAsigmentOffice={onHideAsigmentOffice}
                 handleAssigmentOffice={handleAssigmentOffice}
                 handleClickOffice={handleClickOffice}
+                isLoadingOffice={isLoadingOffice}
             />
         </>
     )

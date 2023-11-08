@@ -1,38 +1,54 @@
 import { useDispatch, useSelector } from "react-redux";
 import testNttDataApi from "../api/testNttDataApi";
-import { onAddNewOffice, onDeleteOffice, onLoadOffice, onUpdateOffice } from "../store/office/officeSlice";
+import { onAddNewOffice, onDeleteOffice, onLoadOffice, onLoadingOffice, onUpdateOffice } from "../store/office/officeSlice";
 
 
 export const useOfficeStore = () => {
     const dispatch = useDispatch();
-    const {offices} = useSelector(state=> state.office);
+    const {offices,isLoadingOffice} = useSelector(state=> state.office);
     
     const startSavingOffice =  async(newOffice) => {
-        if(newOffice.id){
-            const {data} = await testNttDataApi.put(`/office/${newOffice.id}`,newOffice);
-            dispatch(onUpdateOffice({...newOffice}));
-        }else{
-            const{data} = await testNttDataApi.post('/office',newOffice);
-            console.log(data);
-            dispatch(onAddNewOffice({...newOffice,id:data.id}));
+        try {
+            dispatch(onLoadingOffice(true));
+            if(newOffice.id){
+                const {data} = await testNttDataApi.put(`/office/${newOffice.id}`,newOffice);
+                dispatch(onUpdateOffice({...newOffice}));
+            }else{
+                const{data} = await testNttDataApi.post('/office',newOffice);
+                console.log(data);
+                dispatch(onAddNewOffice({...newOffice,id:data.id}));
+            }
+            dispatch(onLoadingOffice(false));
+        } catch (error) {
+            console.log(`${error}`);
+            dispatch(onLoadingOffice(false));
         }
+        
         
     }
 
     const loadDataOffice = async() => {
         try {
+            dispatch(onLoadingOffice(true));
             const {data} = await testNttDataApi.get('/office');
             dispatch(onLoadOffice(data));
-            
-            console.log("oficeeeeeeeeeeeeeeee",data)
+            dispatch(onLoadingOffice(false));
         } catch (error) {
-            console.log(`${error}`)
+            console.log(`${error}`);
+            dispatch(onLoadingOffice(false));
         }
     }
 
     const startDeletingOffice = async(id) => {
-        const {data} = await testNttDataApi.delete(`/office/${id}`);
-        dispatch(onDeleteOffice());
+        try {
+            dispatch(onLoadingOffice(true));
+            const {data} = await testNttDataApi.delete(`/office/${id}`);
+            dispatch(onDeleteOffice());
+            dispatch(onLoadingOffice(false));
+        } catch (error) {
+            dispatch(onLoadingOffice(false));
+        }
+        
     }
 
     return {
@@ -40,5 +56,6 @@ export const useOfficeStore = () => {
         loadDataOffice,
         offices,
         startDeletingOffice,
+        isLoadingOffice
     }
 }

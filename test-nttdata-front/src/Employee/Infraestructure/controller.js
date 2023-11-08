@@ -15,7 +15,7 @@ export const controller = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const cancelRef = useRef();
     // ============= hook crud employe ==========================
-    const {employees,startSavingEmployee,loadData,startDeletingEmployee} = useEmployeeStore();
+    const {employees,startSavingEmployee,loadData,startDeletingEmployee,isLoadingEmployee} = useEmployeeStore();
     const dispatch = useDispatch();
     //============= table office =======================
 
@@ -25,7 +25,7 @@ export const controller = () => {
     const [visibleViewOffice,setVisibleViewOffice] = useState(false);
     const [visibleDetailOffice,setVisibleDetailOffice] = useState(false);
     //===============hook crud office =====================
-    const {loadDataOffice, offices, startDeletingOffice, startSavingOffice} = useOfficeStore();
+    const {loadDataOffice, offices, startDeletingOffice, startSavingOffice,isLoadingOffice} = useOfficeStore();
     const [selectedOffices,setSelectedOffices] = useState(null);
 
     //================== handle click table Action =================
@@ -213,6 +213,8 @@ export const controller = () => {
         visibleDetailOffice,
         handleClickDetailOffice,
         onHideDetailOffice,
-        handleClickOfficeUpdate
+        handleClickOfficeUpdate,
+        isLoadingEmployee,
+        isLoadingOffice,
     }
 }

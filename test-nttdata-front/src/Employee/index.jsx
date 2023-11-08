@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Loading } from '../Loading/Loading';
 import { PageEmployee } from './Components/PageEmployee';
 import { controller } from './Infraestructure/controller';
 
@@ -42,6 +43,9 @@ const index = () => {
     handleClickDetailOffice,
     onHideDetailOffice,
     handleClickOfficeUpdate,
+    isLoadingEmployee,
+    isLoadingOffice,
+    
   } = controller();
 
 
@@ -49,9 +53,13 @@ const index = () => {
     loadData()
     loadDataOffice();
   }, []);
-  
+  if(isLoadingEmployee){
+    return (<Loading/>)
+  }
   return (
     <>
+      
+
       <PageEmployee
         handleClickUpdate={handleClickUpdate}
         handleClickDelete={handleClickDelete}
@@ -86,6 +94,8 @@ const index = () => {
         handleClickDetailOffice={handleClickDetailOffice}
         onHideDetailOffice={onHideDetailOffice}
         handleClickOfficeUpdate={handleClickOfficeUpdate}
+        isLoadingEmployee={isLoadingEmployee}
+        isLoadingOffice={isLoadingOffice}
       />
     </>
   )

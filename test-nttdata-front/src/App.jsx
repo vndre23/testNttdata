@@ -13,7 +13,10 @@ function App() {
         <ChakraProvider>
           <PrimeReactProvider>
             <Sidebar>
-              <Employee />
+              
+                <Employee />
+              
+              
             </Sidebar>
 
           </PrimeReactProvider>

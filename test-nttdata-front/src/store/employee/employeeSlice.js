@@ -3,10 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 export const employeeSlice = createSlice({
     name: 'employee',
     initialState: {
+        isLoadingEmployee:true,
         activeEmployee:null,
         employees: [],
     },
     reducers: {
+        onLoadingEmployee:(state,{payload}) => {
+            state.isLoadingEmployee=payload;
+        },
         onSetActiveEmployee: ( state, { payload }) => {
             
             state.activeEmployee = payload;
@@ -48,6 +52,7 @@ export const {
     onUpdateEmployee,
     onLoadEmployee,
     onSetActiveEmployee,
-    onDeleteEvent
+    onDeleteEvent,
+    onLoadingEmployee
 
 } = employeeSlice.actions;
